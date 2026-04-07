@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary:  #4F46E5;
+  --violet:   #7C3AED;
+  --lavender: #8B5CF6;
+  --cyan:     #06B6D4;
+  --sky:      #0EA5E9;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #FAFAFA;
+  color: #111827;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #FAFAFA; }
+::-webkit-scrollbar-thumb { background: #C4B5FD; border-radius: 3px; }
+
+/* Light glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 24px rgba(79, 70, 229, 0.06);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  box-shadow: 0 4px 24px rgba(79, 70, 229, 0.07), 0 1px 4px rgba(0,0,0,0.04);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #4F46E5 0%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Soft shadow utilities */
+.shadow-soft  { box-shadow: 0 2px 20px rgba(79,70,229,0.06), 0 1px 4px rgba(0,0,0,0.04); }
+.shadow-card  { box-shadow: 0 4px 24px rgba(79,70,229,0.08), 0 1px 6px rgba(0,0,0,0.04); }
+.shadow-hover { box-shadow: 0 8px 40px rgba(79,70,229,0.14), 0 2px 8px rgba(0,0,0,0.06); }
+.shadow-glow  { box-shadow: 0 0 40px rgba(79,70,229,0.2); }
+.shadow-cyan  { box-shadow: 0 0 30px rgba(6,182,212,0.18); }
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: rgba(79, 70, 229, 0.07);
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  color: #4F46E5;
+}
+
+/* Floating blobs */
+.blob {
+  border-radius: 9999px;
+  filter: blur(80px);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  color: white;
+  font-weight: 700;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(79,70,229,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(79,70,229,0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #111827;
+  font-weight: 600;
+  border-radius: 14px;
+  border: 1px solid #E5E7EB;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: #C4B5FD;
+  box-shadow: 0 4px 16px rgba(79,70,229,0.1);
+}
+
+/* Tilt card */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Step number */
+.step-number {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(79,70,229,0.3);
+}
