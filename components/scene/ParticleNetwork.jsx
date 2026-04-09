@@ -4,8 +4,8 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { lerp } from '../../lib/utils'
 
-const POINT_COLOR = new THREE.Color('#818CF8')  // light indigo
-const LINE_COLOR  = new THREE.Color('#C4B5FD')  // lavender
+const POINT_COLOR = new THREE.Color('#4A7C59')  // sage green
+const LINE_COLOR  = new THREE.Color('#C9963A')  // warm gold
 
 export default function ParticleNetwork({ count = 100, mouse }) {
   const pointsRef = useRef()
@@ -83,10 +83,10 @@ export default function ParticleNetwork({ count = 100, mouse }) {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3} />
         </bufferGeometry>
-        <pointsMaterial color={POINT_COLOR} size={0.028} transparent opacity={0.5} sizeAttenuation depthWrite={false} />
+        <pointsMaterial color={POINT_COLOR} size={0.030} transparent opacity={0.55} sizeAttenuation depthWrite={false} />
       </points>
       <lineSegments ref={linesRef} geometry={lineGeo}>
-        <lineBasicMaterial color={LINE_COLOR} transparent opacity={0.15} depthWrite={false} />
+        <lineBasicMaterial color={LINE_COLOR} transparent opacity={0.18} depthWrite={false} />
       </lineSegments>
     </group>
   )

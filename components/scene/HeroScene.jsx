@@ -10,12 +10,12 @@ function Scene({ particleCount }) {
   const mouse = useMouseParallax()
   return (
     <>
-      {/* Warm white ambient — critical for light theme feel */}
-      <ambientLight intensity={1.8} color="#F8F8FF" />
-      <directionalLight position={[5, 5, 5]}  intensity={1.2} color="#EEF2FF" />
-      <pointLight position={[4, 3, 4]}   intensity={2}   color="#818CF8" />
-      <pointLight position={[-4, -3, 2]} intensity={1.2} color="#06B6D4" />
-      <pointLight position={[0, 5, -3]}  intensity={0.6} color="#C4B5FD" />
+      {/* Warm cream ambient — forest green + gold theme */}
+      <ambientLight intensity={2.0} color="#FDF8F0" />
+      <directionalLight position={[5, 5, 5]}  intensity={1.0} color="#F5EFE3" />
+      <pointLight position={[4, 3, 4]}   intensity={1.8} color="#2D6A4F" />
+      <pointLight position={[-4, -3, 2]} intensity={1.0} color="#C9963A" />
+      <pointLight position={[0, 5, -3]}  intensity={0.5} color="#4A7C59" />
 
       <group>
         <ParticleNetwork count={particleCount} mouse={mouse} />

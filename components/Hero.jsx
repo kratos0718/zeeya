@@ -7,7 +7,7 @@ const HeroScene = dynamic(() => import('./scene/HeroScene'), {
   ssr: false,
   loading: () => (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="w-3 h-3 rounded-full bg-primary/40 animate-ping" />
+      <div className="w-3 h-3 rounded-full animate-ping" style={{ background: '#C9963A', opacity: 0.5 }} />
     </div>
   ),
 })
@@ -25,90 +25,117 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative w-full h-screen overflow-hidden bg-hero-gradient">
-      {/* Background blobs */}
-      <div className="blob w-[500px] h-[500px] bg-indigo-100/60 top-[-10%] right-[-5%] opacity-70" />
-      <div className="blob w-[400px] h-[400px] bg-cyan-100/50 bottom-[-5%] left-[-5%] opacity-60" />
-      <div className="blob w-[300px] h-[300px] bg-violet-100/40 top-[30%] left-[10%] opacity-50" />
+      {/* Warm background blobs */}
+      <div className="blob w-[560px] h-[560px] top-[-8%] right-[-4%] opacity-50"
+        style={{ background: 'radial-gradient(circle, rgba(45,106,79,0.12) 0%, transparent 70%)' }} />
+      <div className="blob w-[420px] h-[420px] bottom-[-6%] left-[-6%] opacity-40"
+        style={{ background: 'radial-gradient(circle, rgba(201,150,58,0.14) 0%, transparent 70%)' }} />
+      <div className="blob w-[300px] h-[300px] top-[35%] left-[15%] opacity-30"
+        style={{ background: 'radial-gradient(circle, rgba(27,67,50,0.08) 0%, transparent 70%)' }} />
+
+      {/* Subtle grain texture overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundSize: '200px' }} />
 
       {/* 3D Scene */}
       <div className="absolute inset-0 flex items-center justify-end pr-[8%] pointer-events-none">
-        <div className="w-[340px] h-[340px] md:w-[500px] md:h-[500px] lg:w-[580px] lg:h-[580px]">
+        <div className="w-[320px] h-[320px] md:w-[480px] md:h-[480px] lg:w-[560px] lg:h-[560px]">
           <HeroScene />
         </div>
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to top, #FAF7F2, transparent)' }} />
 
       {/* Content */}
       <motion.div
         style={{ opacity, y }}
         className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 max-w-6xl mx-auto"
       >
-        {/* Badge */}
-        <motion.div variants={fade} initial="hidden" animate="show" custom={0.15} className="mb-7">
+        {/* Gold accent line */}
+        <motion.div
+          variants={fade} initial="hidden" animate="show" custom={0.1}
+          className="mb-7 flex items-center gap-4"
+        >
+          <div className="w-8 h-[2px] rounded-full" style={{ background: '#C9963A' }} />
           <span className="badge">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft" />
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse-soft" style={{ background: '#C9963A' }} />
             AI-Powered Financial Intelligence
           </span>
         </motion.div>
 
         {/* Headline */}
-        <motion.div variants={fade} initial="hidden" animate="show" custom={0.3}>
-          <h1 className="text-[62px] sm:text-[80px] md:text-[96px] font-black leading-[0.92] tracking-[-0.04em] mb-2">
+        <motion.div variants={fade} initial="hidden" animate="show" custom={0.28}>
+          <h1 className="text-[68px] sm:text-[84px] md:text-[100px] font-black leading-[0.88] tracking-[-0.04em]">
             <span className="text-gradient">ZEEYA</span>
           </h1>
-          <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-text leading-tight tracking-[-0.02em] mt-3">
+          <h2 className="text-[26px] sm:text-[34px] md:text-[42px] font-bold leading-tight tracking-[-0.02em] mt-4"
+            style={{ color: '#1A1508' }}>
             Your AI Financial Brain
           </h2>
         </motion.div>
 
         {/* Subtext */}
         <motion.p
-          variants={fade} initial="hidden" animate="show" custom={0.45}
+          variants={fade} initial="hidden" animate="show" custom={0.44}
           className="mt-5 text-[17px] text-muted max-w-md leading-relaxed"
         >
-          Track every rupee, predict overspending, get a daily budget,
+          Track every rupee, predict overspending, get your daily budget,
           and receive smart advice — automatically.
         </motion.p>
 
-        {/* Founder line */}
-        <motion.p
-          variants={fade} initial="hidden" animate="show" custom={0.55}
-          className="mt-3 text-[13px] text-subtle font-medium"
+        {/* Founder badge */}
+        <motion.div
+          variants={fade} initial="hidden" animate="show" custom={0.54}
+          className="mt-4 inline-flex items-center gap-2"
         >
-          Built by{' '}
-          <span className="text-primary font-semibold">Teja</span>
-          {' '}&{' '}
-          <span className="text-primary font-semibold">Abhinav</span>
-        </motion.p>
+          <div className="flex -space-x-1.5">
+            {['T', 'A'].map((l, i) => (
+              <div key={l} className="w-6 h-6 rounded-full border-2 border-bg flex items-center justify-center text-[10px] font-black text-white"
+                style={{ background: i === 0 ? '#1B4332' : '#C9963A' }}>
+                {l}
+              </div>
+            ))}
+          </div>
+          <p className="text-[13px] text-subtle font-medium">
+            Built by{' '}
+            <span className="font-semibold" style={{ color: '#1B4332' }}>Teja</span>
+            {' '}&{' '}
+            <span className="font-semibold" style={{ color: '#C9963A' }}>Abhinav</span>
+            {' '}· Visakhapatnam
+          </p>
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
-          variants={fade} initial="hidden" animate="show" custom={0.65}
+          variants={fade} initial="hidden" animate="show" custom={0.64}
           className="mt-8 flex flex-wrap gap-3"
         >
           <a href="#cta" className="btn-primary px-8 py-4 text-[15px]">
-            Get started free →
+            Get early access →
           </a>
-          <a href="#features" className="btn-secondary px-8 py-4 text-[15px]">
-            See how it works
+          <a href="#finance" className="btn-secondary px-8 py-4 text-[15px]">
+            See live demo
           </a>
         </motion.div>
 
         {/* Metrics */}
         <motion.div
           variants={fade} initial="hidden" animate="show" custom={0.8}
-          className="mt-12 flex flex-wrap gap-8"
+          className="mt-12 flex flex-wrap gap-8 items-center"
         >
           {[
             { n: '2.4M+', l: 'Transactions analyzed' },
-            { n: '99.2%', l: 'Fraud detection' },
+            { n: '99.2%', l: 'Fraud detection rate' },
             { n: '₹840',  l: 'Avg. monthly savings' },
-          ].map(s => (
-            <div key={s.l}>
-              <div className="text-[22px] font-black text-gradient-warm">{s.n}</div>
-              <div className="text-[12px] text-muted mt-0.5">{s.l}</div>
+          ].map((s, i) => (
+            <div key={s.l} className="flex items-center gap-3">
+              {i > 0 && <div className="w-px h-8 bg-border" />}
+              <div>
+                <div className="text-[24px] font-black text-gradient-gold leading-none">{s.n}</div>
+                <div className="text-[12px] text-muted mt-0.5">{s.l}</div>
+              </div>
             </div>
           ))}
         </motion.div>
@@ -123,7 +150,8 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 7, 0] }}
           transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-          className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"
+          className="w-px h-8"
+          style={{ background: 'linear-gradient(to bottom, #C9963A80, transparent)' }}
         />
       </motion.div>
     </section>
