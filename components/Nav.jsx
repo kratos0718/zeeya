@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const LINKS = [
-  { label: 'Features',     href: '#features' },
+  { label: 'Features',   href: '#features' },
   { label: 'How it works', href: '#how' },
-  { label: 'AI Finance',   href: '#finance' },
-  { label: 'Join waitlist',href: '#cta' },
+  { label: 'AI Finance', href: '#finance' },
+  { label: 'Insurance',  href: '#insurance' },
+  { label: 'Trips',      href: '#trips' },
+  { label: 'Join waitlist', href: '#cta' },
 ]
 
 export default function Nav() {
@@ -40,8 +42,8 @@ export default function Nav() {
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            {LINKS.slice(0, 3).map(l => (
+          <div className="hidden md:flex items-center gap-6">
+            {LINKS.slice(0, 5).map(l => (
               <a key={l.label} href={l.href}
                 className="text-[13px] text-muted hover:text-primary transition-colors font-medium">
                 {l.label}
